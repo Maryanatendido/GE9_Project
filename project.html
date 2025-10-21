@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rizal’s Childhood in Calamba</title>
+
+  <style>
+    /* --- Reset & Global Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', 'Times New Roman', serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #f7f2e7, #e9dfc9);
+      color: #3a2e1e;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* --- Header --- */
+    header {
+      background: rgba(108, 78, 52, 0.9);
+      color: #fdfaf4;
+      text-align: center;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+      border-bottom: 3px solid #d9c7a1;
+    }
+
+    header h1 {
+      font-size: 1.9em;
+      letter-spacing: 1px;
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin-top: 10px;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fdfaf4;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      font-family: 'Georgia', serif;
+    }
+
+    nav a:hover {
+      color: #f2e3bb;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      height: 100vh;
+      background: url("background.jfif")
+       center/cover no-repeat;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 130px 20px;
+      position: relative;
+      border-bottom: 4px double #c6b890;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(45, 35, 22, 0.55);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h2 {
+      font-size: 2.6em;
+      margin-bottom: 15px;
+      font-family: 'Cinzel', serif;
+      color: #f8e9cc;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #f2e8d5;
+    }
+
+    .btn {
+      background-color: #d8b26e;
+      color: #3e2d1b;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      font-family: 'Georgia', serif;
+    }
+
+    .btn:hover {
+      background-color: #c9a05e;
+      transform: scale(1.05);
+    }
+
+    /* --- Section Containers --- */
+    section {
+      padding: 70px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 2.2em;
+      color: #5a4229;
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 100%;
+      height: 3px;
+      background-color: #c3a76a;
+      border-radius: 2px;
+    }
+
+    /* --- Biography Section --- */
+    .content p {
+      max-width: 850px;
+      margin: 0 auto 20px;
+      font-size: 1.05em;
+      line-height: 1.9;
+      text-align: justify;
+    }
+
+    /* --- About Section --- */
+    .about {
+      background: #f8f2e4;
+      border: 2px solid #d7c299;
+      border-radius: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* --- Timeline Section --- */
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .timeline-item {
+      background: #fffef9;
+      border-left: 6px solid #a9824d;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(10px);
+      background: #f9f1df;
+    }
+
+    .timeline strong {
+      color: #7b5a33;
+    }
+
+    /* --- Gallery Section --- */
+    .gallery-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .gallery-container img {
+      width: 280px;
+      border-radius: 12px;
+      border: 3px solid #c7b182;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery-container img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* --- Video Section --- */
+    .video iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 15px;
+      border: 4px solid #bfa57b;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      background: #f9f4e9;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background-color: #6c4e34;
+      color: #fdfaf4;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 0.95em;
+      border-top: 3px solid #c9b07c;
+      margin-top: 50px;
+    }
+
+    /* --- Keyframes --- */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2em;
+      }
+      .video iframe {
+        width: 95%;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>José Rizal’s Childhood in Calamba</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#biography">Biography</a></li>
+        <li><a href="#about">About Calamba</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#video">Video</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero visible">
+    <div class="hero-content">
+      <h2>Welcome to Calamba, Rizal’s Hometown</h2>
+      <p>Explore the humble beginnings of our national hero — where his love for learning, nature, and the Philippines first bloomed.</p>
+      <button class="btn" id="learnMore">Learn More</button>
+    </div>
+  </section>
+
+  <section id="biography" class="content">
+    <h2>Rizal’s Childhood Years</h2>
+    <p>José Protacio Rizal Mercado y Alonzo Realonda was born on <strong>June 19, 1861</strong>, in Calamba, Laguna. He was the seventh child of <strong>Francisco Mercado</strong> and <strong>Teodora Alonso</strong>. Growing up in a loving and educated family, Rizal developed a deep passion for learning.</p>
+    <p>His mother, Teodora, was his first teacher who taught him the alphabet, prayers, and values of hard work and faith. As a child, Rizal loved reading, drawing, and exploring the fields of Calamba — experiences that shaped his appreciation for nature, art, and justice.</p>
+  </section>
+
+  <section id="about" class="content">
+    <h2>About Calamba, Laguna</h2>
+    <div class="about">
+      <p>Calamba is a peaceful and vibrant city known as the “Heart of Laguna.” Surrounded by Mount Makiling and Laguna de Bay, it was the perfect environment for young Rizal to grow and observe nature. The family’s ancestral home, now the <strong>Rizal Shrine</strong>, stands as a symbol of simplicity, love, and patriotism — values that deeply influenced Rizal’s character.</p>
+    </div>
+  </section>
+
+  <section id="timeline" class="content">
+    <h2>Timeline of Rizal’s Childhood</h2>
+    <div class="timeline">
+      <div class="timeline-item"><strong>1861:</strong> Born in Calamba, Laguna on June 19.</div>
+      <div class="timeline-item"><strong>1864:</strong> Learned the alphabet and prayers from his mother, Teodora Alonso.</div>
+      <div class="timeline-item"><strong>1869:</strong> Wrote his first poem “Sa Aking Mga Kabata.”</div>
+      <div class="timeline-item"><strong>1870:</strong> Studied under Maestro Celestino and later under Maestro Lucas Padua.</div>
+      <div class="timeline-item"><strong>1872:</strong> Sent to Biñan for formal education under Maestro Justiniano Cruz.</div>
+      <div class="timeline-item"><strong>1877:</strong> Entered Ateneo Municipal de Manila, showing brilliance and discipline.</div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="content">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-container">
+      <img src="c:\Users\TOSHIBA\Desktop\GE9_Project\rizal1.jfif" alt="Mother and Rizal" />
+      <img src="c:\Users\TOSHIBA\Desktop\GE9_Project\rizal2.jfif" alt="family Rizal" />
+      <img src="c:\Users\TOSHIBA\Desktop\GE9_Project\rizal3.jfif" alt="Rizal Shrine in Calamba" />
+      <img src="c:\Users\TOSHIBA\Desktop\GE9_Project\rizal4.jfif" alt="Dr.Jose Rizal" />
+    </div>
+  </section>
+
+  <section id="video" class="content video">
+    <h2>Documentary Video</h2>
+    <iframe 
+      src="https://www.youtube.com/embed/FgQcKpLIXTk"
+      title="Rizal Documentary"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <footer>
+    <p>© 2025 José Rizal Tribute | Designed by Group project</p>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          sec.classList.add("visible");
+        }
+      });
+    });
+
+    // Button alert
+    document.getElementById("learnMore").addEventListener("click", function() {
+      alert("Rizal’s childhood in Calamba was filled with curiosity, family love, and inspiration.!");
+    });
+  </script>
+</body>
+</html>
